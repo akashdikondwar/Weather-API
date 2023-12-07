@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #container{
+            display: flex;
+            background-color: #0093E9;
+            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+            height: 100vh;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #main{
+            display: flex;
+            flex-direction: column;
+            width: 70vw;
+            height: 80vh;
+            border-radius: 20px;
+            padding: 20px;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        #searchbox{
+            width: 70%;
+            font-size: 16px;
+            padding: 7px;
+            border: 2px solid gray;
+            border-radius: 10px;
+        }
+        
+        .rowcontainer{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        #mainTemp{
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            height: 300px;
+            background-color: rgb(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 20px;
+            align-items: center;
+            /* justify-content: center; */
+        }
+
+        #cityContainer h1{
+            color: black;
+            font-size: 4rem;
+            font-weight: 400;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes moveUpDown {
+            0%, 100% {
+            transform: translateY(0); /* Start and end position */
+            }
+            50% {
+            transform: translateY(-10px); /* Middle position - move up */
+            }
+            }
+            
+        #imgContainer img{
+            width: 50%;
+            height: 40%;
+            animation: moveUpDown 1s ease infinite; /* 3 seconds duration, infinite loop */
+
+        }
+
+        #imgContainer{
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            padding-right: 50px;
+        }
+
+        #tempContainer{
+            width: 50%;
+            padding-left: 60px;
+            display: flex;
+            flex-direction: column;
+            animation: moveUpDown 1s ease infinite; /* 3 seconds duration, infinite loop */
+        }
+
+        #tempContainer span{
+            font-size: 3rem;
+        }
+
+        #temp{
+            font-size: 5rem;
+            color: rgb(0, 162, 220);
+        }
+        
+        #tempContainer h1 span{
+            font-size: 3rem;
+            color: rgb(0, 162, 220);
+        }
+        
+        #tempContainer h2{
+            font-family: monospace;
+            color: rgb(0, 153, 255);
+        }
+        #tempContainer h2 span{
+            font-size: 1.5rem;
+            color: rgb(0, 162, 220);
+        }
+
+
+        #rowcontainer1{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        #rowcontainer2{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+            height: 200px;
+        }
+
+        #moreDetailsPanel{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+            background-color: rgb(255, 255, 255, 0.5);
+            height: 100%;
+            border-radius: 15px;
+            padding: 5px;
+
+        }
+
+        #windPanel{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+            background-color: rgb(255, 255, 255, 0.5);
+            height: 100%;
+            border-radius: 15px;
+            padding: 5px;
+        }
+
+        #moreDetailsPanel span{
+            color: orange;
+            font-weight: bold;
+        }
+        #windPanel span{
+            color: orange;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="main">
+            <div class="rowcontainer">
+                        <input type="text" id="searchbox"  placeholder="Enter City"/>
+                    
+            </div>
+
+            <div id="mainTemp">
+                <div id="cityContainer">
+                    <h1 id="cityname" style="font-family: 'Courier New', Courier, monospace;">City</h1>
+                </div>
+
+                <div id="rowcontainer1" style="height: 100%;">
+                    <div id="tempContainer">
+                        <div>
+                            <h1 style="font-family:'Courier New', Courier, monospace;"> <span id="temp">--</span><span>°C</span></h1>
+                        </div>
+                            <h2>Feels Like <span id="feelsLike"> -- </span> <span>°C</span></h2>
+                       
+                    </div>
+
+                    <div id="imgContainer">
+                        <img src="images/cloudy.png" />
+                    </div>
+                </div>
+            </div>
+
+            <div id="rowcontainer2">
+
+                <div id="moreDetailsPanel">
+                
+                    <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Temperature Details</h2>
+                        <br>
+                        Min Temperature  : <span id="minTemp">--</span>
+                        <br>
+                        Max Temperature  : <span id="maxTemp">--</span>
+                    
+                </div>
+
+                <div id="windPanel">
+                    <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Wind Details</h2>
+                    <br>
+                    Wind Speed  : <span id="windSpeed">--</span>
+                    <br>
+                    Wind Degrees  : <span id="windDegrees">--</span>
+                </div>
+
+            </div>
+   
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
